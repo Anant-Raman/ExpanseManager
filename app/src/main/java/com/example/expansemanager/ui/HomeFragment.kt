@@ -28,11 +28,11 @@ class HomeFragment : Fragment(), OnDateSetListener {
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
 
+
         selected_month = view.findViewById(R.id.selected_month)
-       // selected_month.setText(findMonth(Calendar.getInstance().get(Calendar.YEAR)+1))
         var mon:String = (findMonth(Calendar.getInstance().get(Calendar.MONTH))).plus(" ").plus(Calendar.getInstance().get(Calendar.YEAR))
         selected_month.setText(mon)
-        Log.i("yeah",findMonth((Calendar.getInstance().get(Calendar.MONTH)).toInt()))
+        Log.i("yeah",findMonth((Calendar.getInstance().get(Calendar.MONTH))))
         selected_month.setOnClickListener(View.OnClickListener {
             datepicker()
         })

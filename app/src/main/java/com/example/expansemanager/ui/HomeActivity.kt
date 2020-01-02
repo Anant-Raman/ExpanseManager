@@ -11,12 +11,15 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        if (supportActionBar!= null)
+            supportActionBar?.hide()
+
         val bottomNavigation: BottomNavigationView = findViewById(R.id.home_bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         if (savedInstanceState == null) {
             val fragment = HomeFragment()
-            supportFragmentManager.beginTransaction().replace(R.id.container_main, fragment, fragment.javaClass.getSimpleName())
+            supportFragmentManager.beginTransaction().replace(R.id.container_main, fragment, fragment.javaClass.simpleName)
                 .commit()
         }
         initViews()
@@ -33,21 +36,21 @@ class HomeActivity : AppCompatActivity() {
                 R.id.menu_home -> {
                     val fragment = HomeFragment()
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.container_main, fragment, fragment.javaClass.getSimpleName())
+                        .replace(R.id.container_main, fragment, fragment.javaClass.simpleName)
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_planning -> {
                     val fragment = PlanningFragment()
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.container_main, fragment, fragment.javaClass.getSimpleName())
+                        .replace(R.id.container_main, fragment, fragment.javaClass.simpleName)
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_analytics -> {
                     val fragment = AnalyticsFragment()
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.container_main, fragment, fragment.javaClass.getSimpleName())
+                        .replace(R.id.container_main, fragment, fragment.javaClass.simpleName)
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }

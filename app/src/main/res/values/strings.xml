@@ -6,4 +6,18 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="month_and_year">Month and Year</string>
+    <string name="add_an_expanse">Add an expanse</string>
+    <string name="amount_debited">Amount Debited</string>
+    <string name="description">Description</string>
+    <string name="category">Category :</string>
+    <string name="general">General</string>
+    <string name="date">Date :</string>
+    <string name="today_s_date">Today\'s date</string>
+    <string name="amount_credited">Amount Credited</string>
+    <string name="add_income">Add Income</string>
+    <string name="balance">Balance</string>
+    <string name="expanse">Expanse</string>
+    <string name="income">Income</string>
+    <string name="rs_000000">Rs 000000</string>
 </resources>
