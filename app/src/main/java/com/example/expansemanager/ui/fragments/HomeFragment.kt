@@ -1,4 +1,4 @@
-package com.example.expansemanager.ui
+package com.example.expansemanager.ui.fragments
 
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener

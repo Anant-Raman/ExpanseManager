@@ -1,8 +1,11 @@
-package com.example.expansemanager.ui
+package com.example.expansemanager.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.expansemanager.R
+import com.example.expansemanager.ui.fragments.AnalyticsFragment
+import com.example.expansemanager.ui.fragments.HomeFragment
+import com.example.expansemanager.ui.fragments.PlanningFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
@@ -34,21 +37,24 @@ class HomeActivity : AppCompatActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_home -> {
-                    val fragment = HomeFragment()
+                    val fragment =
+                        HomeFragment()
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.container_main, fragment, fragment.javaClass.simpleName)
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_planning -> {
-                    val fragment = PlanningFragment()
+                    val fragment =
+                        PlanningFragment()
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.container_main, fragment, fragment.javaClass.simpleName)
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_analytics -> {
-                    val fragment = AnalyticsFragment()
+                    val fragment =
+                        AnalyticsFragment()
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.container_main, fragment, fragment.javaClass.simpleName)
                         .commit()
