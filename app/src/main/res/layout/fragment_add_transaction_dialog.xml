@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.AddTransactionDialogFragment">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16"
+            app:cardCornerRadius="@dimen/dp_8"
+            app:cardUseCompatPadding="true" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/amt_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/amt_input"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/amount"
+                        android:textSize="@dimen/sp_16" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/desc_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/amt_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/transaction_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/description"
+                        android:textSize="@dimen/sp_16" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/toggle_exp_inc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/desc_layout"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:id="@+id/btn_sel_debit"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:background="@drawable/toggle_switch"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:gravity="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/sp_16"
+                        android:padding="@dimen/dp_8"
+                        android:text="@string/debit"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/dp_16"
+                        android:id="@+id/btn_sel_credit"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:textSize="@dimen/sp_16"
+                        android:background="@drawable/toggle_switch"
+                        android:gravity="center"
+                        android:textColor="@color/colorWhite"
+                        android:padding="@dimen/dp_8"
+                        android:text="@string/credit"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/footer_opn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"
+                    android:layout_below="@id/toggle_exp_inc"
+                    android:baselineAligned="false">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/expanse_category_head"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/category"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/sp_16"
+                            android:layout_marginStart="6dp" />
+
+
+                        <TextView
+                            android:id="@+id/category_val"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/general"
+                            android:textSize="@dimen/sp_16"
+                            android:layout_marginStart="@dimen/dp_6" />
+
+                        <ImageButton
+                            android:id="@+id/category_btn"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/ic_arrow_drop_down_blue_24dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/expanse_date_head"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/date"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/sp_16"
+                            android:layout_marginStart="@dimen/dp_6" />
+
+
+                        <TextView
+                            android:id="@+id/date_val"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/today_s_date"
+                            android:textSize="@dimen/sp_16"
+                            android:layout_marginStart="@dimen/dp_6" />
+
+
+                        <ImageButton
+                            android:id="@+id/date_btn"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="4dp"
+                            android:background="@drawable/ic_date_range_black_24dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btn_amt_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/btn_bg"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/dp_10" />
+
+    </LinearLayout>
+
+</FrameLayout>

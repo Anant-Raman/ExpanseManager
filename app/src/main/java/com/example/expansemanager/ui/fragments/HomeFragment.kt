@@ -3,14 +3,17 @@ package com.example.expansemanager.ui.fragments
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.expansemanager.R
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import kotlinx.android.synthetic.main.fragment_add_transaction_dialog.view.*
 import java.util.*
 
 
@@ -19,6 +22,7 @@ class HomeFragment : Fragment(), OnDateSetListener {
     var cal = Calendar.getInstance()
     private lateinit var btn :Button
     private lateinit var selected_month :TextView
+    private lateinit var mBtnAddTransaction: ImageButton
 
 
     override fun onCreateView(
@@ -28,16 +32,68 @@ class HomeFragment : Fragment(), OnDateSetListener {
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
 
+        initViews(view)
+        return view
+    }
 
+    private fun initViews(view : View)
+    {
         selected_month = view.findViewById(R.id.selected_month)
         var mon:String = (findMonth(Calendar.getInstance().get(Calendar.MONTH))).plus(" ").plus(Calendar.getInstance().get(Calendar.YEAR))
         selected_month.setText(mon)
-        Log.i("yeah",findMonth((Calendar.getInstance().get(Calendar.MONTH))))
         selected_month.setOnClickListener(View.OnClickListener {
             datepicker()
         })
+        mBtnAddTransaction = view.findViewById(R.id.btn_add_transaction)
+        mBtnAddTransaction.setOnClickListener(View.OnClickListener {
 
-        return view
+            val view_bottomsheet: View = layoutInflater.inflate(R.layout.fragment_add_transaction_dialog, null)
+
+            val dialog = BottomSheetDialog(activity!!, R.style.BottomSheetDialog)
+            dialog.setContentView(view_bottomsheet)
+            dialog.show()
+
+            var amountInput: EditText = view_bottomsheet.findViewById(R.id.amt_input)
+            var amtVal: Editable? = amountInput.text
+
+            var descriptionInput: EditText = view_bottomsheet.findViewById(R.id.transaction_desc)
+            var descStr: Editable = descriptionInput.text
+
+            var isDebit: Boolean?
+
+            var btnDebit: TextView = view_bottomsheet.findViewById(R.id.btn_sel_debit)
+            var btnCredit: TextView = view_bottomsheet.findViewById(R.id.btn_sel_credit)
+            var btnTransactionSubmit: Button = view_bottomsheet.findViewById(R.id.btn_amt_submit)
+            var categoryInput: TextView = view_bottomsheet.findViewById(R.id.category_val)
+            var categoryStr: String= categoryInput.text.toString()
+            var dateVal: TextView = view_bottomsheet.findViewById(R.id.date_val)
+            var dateStr: String = dateVal.text.toString()
+
+            btnDebit.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.colorDark)
+
+            btnDebit.setOnClickListener(View.OnClickListener {
+                isDebit = true
+                Log.i("debit", isDebit.toString())
+                btnDebit.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.colorDark)
+                btnCredit.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.colorPrimary)
+//                btnDebit.setBackgroundResource(R.drawable.selected)
+//                btnCredit.setBackgroundResource(R.drawable.unselected)
+            })
+            btnCredit.setOnClickListener(View.OnClickListener {
+                isDebit = false
+                Log.i("debit", isDebit.toString())
+                btnCredit.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.colorDark)
+                btnDebit.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.colorPrimary)
+//                btnCredit.setBackgroundResource(R.drawable.selected)
+//                btnDebit.setBackgroundResource(R.drawable.unselected)
+            })
+
+            btnTransactionSubmit.setOnClickListener(View.OnClickListener {
+                Log.i("Print", amtVal.toString()+" "+descStr+" "+categoryStr+" "+dateStr)
+            })
+
+        })
+
     }
 
     private fun datepicker() {
